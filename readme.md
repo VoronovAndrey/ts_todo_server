@@ -18,6 +18,13 @@ yarn start
 ```
 
 
+## .env example
+
+```sh
+PORT=8000
+MONGO_URI="mongodb+srv://<username>:<password>@todotstest.2eahvpj.mongodb.net/"
+```
+
 ## _API_
 
 #### Get all tasks

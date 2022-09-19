@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
-import mongoose from 'mongoose'
+// import mongoose from 'mongoose'
 import Todo from '../model/model.Todo'
 
 
@@ -12,10 +12,12 @@ const readAll = ((req: Request, res: Response, next: NextFunction) => {
 })
 
 const addNew = ((req: Request, res: Response, next: NextFunction) => {
-    // const { todo, id, isDone } = req.body;
+    const { todo, id, isDone } = req.body;
 
     const task = new Todo({
-        ...req.body
+        id: id,
+        todo: todo,
+        isDone: isDone
     })
 
     return task.save()

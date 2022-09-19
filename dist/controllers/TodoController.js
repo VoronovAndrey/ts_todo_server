@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// import mongoose from 'mongoose'
 const model_Todo_1 = __importDefault(require("../model/model.Todo"));
 const readAll = ((req, res, next) => {
     return model_Todo_1.default.find()
@@ -12,8 +13,12 @@ const readAll = ((req, res, next) => {
         .catch(err => res.status(500).json({ err }));
 });
 const addNew = ((req, res, next) => {
-    // const { todo, id, isDone } = req.body;
-    const task = new model_Todo_1.default(Object.assign({}, req.body));
+    const { todo, id, isDone } = req.body;
+    const task = new model_Todo_1.default({
+        id: id,
+        todo: todo,
+        isDone: isDone
+    });
     return task.save()
         .then((task) => res.status(200).json({ task }))
         .catch((err) => res.status(500).json({ err }));

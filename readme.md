@@ -41,11 +41,11 @@ MONGO_URI="mongodb+srv://<username>:<password>@todotstest.2eahvpj.mongodb.net/"
 #### Delete task
 |path|/tasks/delete/|
 |---|---|
-|method|POST|
+|method|DELETE|
 |require|id|
 
 #### Update task
-|path|/tasks/add/|
+|path|/tasks/update/|
 |---|---|
 |method|PATCH|
 |require|id|

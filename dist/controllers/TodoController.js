@@ -20,13 +20,13 @@ const addNew = ((req, res, next) => {
         isDone: isDone
     });
     return task.save()
-        .then((task) => res.status(200).json({ task }))
+        .then((task) => res.status(201).json({ task }))
         .catch((err) => res.status(500).json({ err }));
 });
 const deleteById = ((req, res, next) => {
     const id = req.body.id;
     return model_Todo_1.default.findOneAndDelete({ id: id })
-        .then((task) => task ? res.status(201).json({ message: "deleted" }) : res.status(404).json({ message: "not found" }))
+        .then((task) => task ? res.status(200).json({ message: "deleted" }) : res.status(404).json({ message: "not found" }))
         .catch(err => res.status(500).json({ err }));
 });
 const updateById = ((req, res, next) => {
@@ -35,7 +35,7 @@ const updateById = ((req, res, next) => {
         todo: todo,
         isDone: isDone
     })
-        .then((task) => task ? res.status(201).json({ message: "updated" }) : res.status(404).json({ message: "not found" }))
+        .then((task) => task ? res.status(200).json({ message: "updated" }) : res.status(404).json({ message: "not found" }))
         .catch(err => res.status(500).json({ err }));
 });
 exports.default = { readAll, addNew, deleteById, updateById };

@@ -21,7 +21,7 @@ const addNew = ((req: Request, res: Response, next: NextFunction) => {
     })
 
     return task.save()
-        .then((task) => res.status(200).json({ task }))
+        .then((task) => res.status(201).json({ task }))
         .catch((err) => res.status(500).json({ err }))
 })
 
@@ -29,7 +29,7 @@ const deleteById = ((req: Request, res: Response, next: NextFunction) => {
     const id = req.body.id
 
     return Todo.findOneAndDelete({ id: id })
-        .then((task) => task ? res.status(201).json({ message: "deleted" }) : res.status(404).json({ message: "not found" }))
+        .then((task) => task ? res.status(200).json({ message: "deleted" }) : res.status(404).json({ message: "not found" }))
         .catch(err => res.status(500).json({ err }))
 })
 
@@ -40,7 +40,7 @@ const updateById = ((req: Request, res: Response, next: NextFunction) => {
         todo: todo,
         isDone: isDone
     })
-        .then((task) => task ? res.status(201).json({ message: "updated" }) : res.status(404).json({ message: "not found" }))
+        .then((task) => task ? res.status(200).json({ message: "updated" }) : res.status(404).json({ message: "not found" }))
         .catch(err => res.status(500).json({ err }))
 })
 
